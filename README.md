@@ -136,6 +136,7 @@ If you are interested in defining a user-defined sampler, here is an example:
 
 * [Optimizing on Dask Cluster](./dask/dask_simple.py)
 * [Optimizing on Kubernetes](./kubernetes/README.md)
+* [Optimizing with Nebius Serverless Jobs](./nebius/README.md)
 * [Optimizing with Ray's Joblib Backend](./ray/ray_joblib.py)
 </details>
 

@@ -1,0 +1,43 @@
+name: nebius
+
+on:
+  pull_request:
+    paths:
+      - 'nebius/**'
+      - '.github/workflows/nebius.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  examples:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_PASSWORD: local-test-only
+          POSTGRES_DB: optuna_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      OPTUNA_TEST_DSN: postgresql+psycopg2://postgres:local-test-only@127.0.0.1:5432/optuna_test
+      OMP_NUM_THREADS: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch==2.14.0 torchvision==0.29.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r nebius/requirements-test.txt
+      - name: Run credential-free tests
+        run: python -m pytest nebius/tests -q

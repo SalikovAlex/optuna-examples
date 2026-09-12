@@ -1,0 +1,29 @@
+# All identifiers and the final worker image digest belong to YOUR project.
+project_id: REPLACE_PROJECT_ID
+subnet_id: REPLACE_SUBNET_ID
+platform: REPLACE_GPU_PLATFORM
+preset: REPLACE_ONE_GPU_PRESET
+image: REPLACE_REGISTRY/optuna@sha256:REPLACE_DIGEST
+region: REPLACE_REGION
+s3_endpoint: https://REPLACE_OBJECT_STORAGE_ENDPOINT
+bucket: REPLACE_BUCKET
+prefix: optuna
+# Use version IDs, with payload keys matching these environment variables:
+# OPTUNA_STORAGE_URL; AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+database_secret_version: REPLACE_DATABASE_SECRET_VERSION
+s3_secret_version: REPLACE_S3_SECRET_VERSION
+# Optional: native registry secret with REGISTRY_USERNAME/REGISTRY_PASSWORD.
+registry_secret_version: ""
+trials: 8
+concurrency: 2
+epochs: 5
+train_samples: 3840
+valid_samples: 1280
+seed: 42
+job_timeout: 3600
+worker_timeout: 900
+run_timeout: 7200
+poll_seconds: 10
+artifact_grace: 120
+disk_gib: 50
+shm_gib: 2

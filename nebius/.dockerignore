@@ -1,0 +1,9 @@
+*
+!requirements-worker.txt
+!common.py
+!journal.py
+!worker.py
+!prepare_data.py
+!constraints-worker.txt
+!LICENSE
+!FASHIONMNIST-LICENSE

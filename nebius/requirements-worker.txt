@@ -1,0 +1,7 @@
+-c constraints-worker.txt
+optuna==5.0.0
+psycopg2-binary==2.9.13
+boto3==1.43.93
+PyYAML==6.0.3
+torch==2.14.0
+torchvision==0.29.0

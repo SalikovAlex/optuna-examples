@@ -1,0 +1,5 @@
+optuna==5.0.0
+nebius==0.6.10
+psycopg2-binary==2.9.13
+boto3==1.43.93
+PyYAML==6.0.3
